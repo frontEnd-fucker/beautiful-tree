@@ -41,9 +41,9 @@
     "storybook": "^7.6.5"
   },
   "lint-staged": {
-    "*.ts": [
+    "*.ts|*.tsx": [
       "eslint",
-      "prettier --list-different"
+      "prettier --list-different --write --ignore-unknown"
     ]
   }
 }

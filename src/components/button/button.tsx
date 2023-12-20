@@ -8,10 +8,7 @@ export type ButtonProps = {
   color: string;
 };
 
-export const Button: React.FC<ButtonProps> = ({ size = "md", children }) => {
-  const color = "";
-  color = 2;
-
+export const Button: React.FC<ButtonProps> = ({ children }) => {
   return (
     <div>
       <div>{children}</div>
