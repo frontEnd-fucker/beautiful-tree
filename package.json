@@ -43,7 +43,7 @@
   "lint-staged": {
     "*.ts|*.tsx": [
       "eslint",
-      "prettier --list-different --write --ignore-unknown"
+      "prettier --write --ignore-unknown"
     ]
   }
 }
