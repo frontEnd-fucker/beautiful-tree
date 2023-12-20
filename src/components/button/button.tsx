@@ -10,7 +10,7 @@ export type ButtonProps = {
 
 export const Button: React.FC<ButtonProps> = ({ size = "md", children }) => {
   const color = "";
-  color = 1;
+  color = 2;
 
   return (
     <div>
