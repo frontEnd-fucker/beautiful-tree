@@ -10,7 +10,8 @@
     "build-storybook": "storybook build",
     "prepare": "husky install",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "build": "rollup -c"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.5",
     "@storybook/addon-essentials": "^7.6.5",
     "@storybook/addon-interactions": "^7.6.5",
     "@storybook/addon-links": "^7.6.5",
@@ -44,7 +46,10 @@
     "lint-staged": "^15.2.0",
     "prettier": "3.1.1",
     "prop-types": "^15.8.1",
+    "rollup": "^4.9.1",
+    "rollup-plugin-dts": "^6.1.0",
     "storybook": "^7.6.5",
+    "tslib": "^2.6.2",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "vitest": "^1.1.0"
@@ -54,7 +59,7 @@
       "eslint",
       "prettier --write --ignore-unknown"
     ],
-    "*.ts|*tsx": [
+    "*.test.tsx": [
       "vitest run"
     ]
   }
