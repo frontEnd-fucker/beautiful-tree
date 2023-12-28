@@ -6,7 +6,17 @@ import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      babel: {
+        // vite dont use babel by default, but we need the babel the compile stylex
+        // Use babel.config.js files
+        configFile: true,
+      },
+    }),
+  ],
+  // https://github.com/storybookjs/storybook/issues/25256
+  assetsInclude: ["/sb-preview/runtime.js"],
   test: {
     globals: true,
     environment: "jsdom",

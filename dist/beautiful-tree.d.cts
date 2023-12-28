@@ -9,4 +9,12 @@ type ButtonProps = {
 };
 declare const Button: React.FC<ButtonProps>;
 
-export { Button, type ButtonProps };
+interface AvatarProps {
+    /** Image url */
+    src?: string;
+    /** Size of the avatar */
+    size?: "sm" | "md" | "lg";
+}
+declare const Avatar: React.FC<AvatarProps>;
+
+export { Avatar, type AvatarProps, Button, type ButtonProps };
