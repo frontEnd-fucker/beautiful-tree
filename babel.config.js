@@ -3,8 +3,6 @@ import { fileURLToPath } from "url";
 
 const __dirname1 = dirname(fileURLToPath(import.meta.url));
 
-console.log("xxxsfsdf", __dirname1);
-
 export default {
   presets: ["@babel/preset-typescript", "@babel/preset-react"],
   plugins: [
@@ -31,5 +29,5 @@ export default {
   ],
   // ignore: [/node_modules\/(?!@stylexjs\/open-props)/],
   // ignore: [/node_modules/],
-  ignore: [],
+  // ignore: [],
 };
