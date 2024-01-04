@@ -19,6 +19,16 @@ const config = {
     // reactDocgen: 'react-docgen-typescript',   // this one cannot autogen the descrition of the props, use the bottom one instead
     reactDocgen: "react-docgen",
   },
+  // typescript: {
+  //   reactDocgen: "react-docgen-typescript",
+  //   reactDocgenTypescriptOptions: {
+  //     compilerOptions: {
+  //       allowSyntheticDefaultImports: false,
+  //       esModuleInterop: false,
+  //     },
+  //     propFilter: () => true,
+  //   },
+  // },
   staticDirs: ["../public"],
 };
 export default config;

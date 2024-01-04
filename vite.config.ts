@@ -25,4 +25,7 @@ export default defineConfig({
     // since parsing CSS is slow
     css: true,
   },
+  optimizeDeps: {
+    exclude: ["/node_modules/@stylexjs"],
+  },
 });

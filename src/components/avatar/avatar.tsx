@@ -1,18 +1,40 @@
 import React from "react";
-import * as stylex from "@stylexjs/stylex";
+import stylex from "@stylexjs/stylex";
+// import { colors } from "@stylexjs/open-props/lib/colors.stylex";
+// import "@stylexjs/open-props/lib/colors.stylex";
+import { colors } from "../../style/token/color.stylex";
+import "../../style/token/color.stylex";
+// import { tokens } from "./token.stylex";
+// import "./token.stylex";
+import { RxAvatar } from "react-icons/rx";
 
 const styles = stylex.create({
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: tokens.lineColor,
+    // color: colors.blue0,
+    backgroundColor: colors.blue0,
+    borderRadius: "100%",
+    overflow: "hidden",
+  },
+  img: {
+    width: "100%",
+    height: "100%",
+    borderRadius: "100%",
+  },
   sm: {
-    width: 16,
-    height: 16,
+    width: 26,
+    height: 26,
   },
   md: {
-    width: 32,
-    height: 32,
+    width: 38,
+    height: 38,
   },
   lg: {
-    width: 64,
-    height: 64,
+    width: 56,
+    height: 56,
   },
 });
 
@@ -21,10 +43,25 @@ export interface AvatarProps {
   src?: string;
   /** Size of the avatar */
   size?: "sm" | "md" | "lg";
+  /** Image alt attribute */
+  alt?: string;
+  /** Placeholder when there is no image */
+  placeholder?: React.ReactNode; // TODO: add default Icon
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ src, size = "md" }) => {
+export const Avatar: React.FC<AvatarProps> = ({
+  src,
+  size = "md",
+  alt,
+  placeholder = <RxAvatar />,
+}) => {
   return (
-    <div>{src ? <img {...stylex.props(styles[size])} src={src} /> : null}</div>
+    <div {...stylex.props(styles.container, styles[size])}>
+      {src ? (
+        <img {...stylex.props(styles.img)} src={src} alt={alt} />
+      ) : (
+        placeholder
+      )}
+    </div>
   );
 };

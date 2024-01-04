@@ -16,5 +16,18 @@ type Story = StoryObj<typeof Avatar>;
 export const Basic: Story = {
   args: {
     src: "image/avatar1.jpeg",
+    size: "md",
+    alt: "my avatar",
   },
+};
+
+export const Placeholder: Story = {
+  args: {
+    size: "md",
+    placeholder: "sdf",
+  },
+};
+
+export const DefaultIcon: Story = {
+  args: {},
 };
