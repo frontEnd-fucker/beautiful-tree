@@ -24,8 +24,6 @@ export const Basic: Story = {
   args: {
     isOpen: false,
     children: Content,
-    transitionDuration: 1000,
-    transitionTimingFunction: "linear",
   },
 };
 

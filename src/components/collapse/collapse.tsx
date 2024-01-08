@@ -21,8 +21,6 @@ const style = stylex.create({
   base: {
     overflow: "hidden",
     transition: "height",
-    transitionDuration: 200,
-    transitionTimingFunction: easings.ease1,
   },
   transition: (
     transitionDuration?: number,
@@ -39,8 +37,8 @@ const style = stylex.create({
 export const Collapse: React.FC<PropsWithChildren<CollapseProps>> = ({
   children,
   isOpen,
-  transitionDuration,
-  transitionTimingFunction,
+  transitionDuration = 200,
+  transitionTimingFunction = easings.ease1,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const heightRef = useRef<number>();
