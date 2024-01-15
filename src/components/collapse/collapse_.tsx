@@ -1,5 +1,6 @@
 /**
  * this version donest work, because the force sync layout
+ * it will apply auto at first
  */
 import stylex from "@stylexjs/stylex";
 import React, {
