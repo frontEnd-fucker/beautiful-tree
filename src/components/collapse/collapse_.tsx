@@ -1,7 +1,7 @@
 import stylex from "@stylexjs/stylex";
 import React, {
   PropsWithChildren,
-  RefObject,
+  // useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -16,15 +16,12 @@ export interface CollapseProps {
   transitionDuration?: number;
   /** transitionTimingFunction, ease by default */
   transitionTimingFunction?: string;
-  /** Callback for the transion end */
-  transitionEnd?: () => void;
 }
 
 const style = stylex.create({
   base: {
     overflow: "hidden",
     transitionProperty: "height, display",
-    /** safari dont support transitionBehavior */
     transitionBehavior: "allow-discrete",
   },
   transition: (
@@ -37,59 +34,59 @@ const style = stylex.create({
   getHeight: (height: number | "auto") => ({
     height,
   }),
+  hidden: {
+    display: "none",
+  },
+  show: {
+    display: "block",
+  },
 });
-
-const getElementHeight = (ref: RefObject<HTMLDivElement>): number | "auto" => {
-  const ele = ref.current;
-  return ele ? ele.scrollHeight : "auto";
-};
-
-const COLLAPSED_HEIGHT = 0;
 
 export const Collapse: React.FC<PropsWithChildren<CollapseProps>> = ({
   children,
   isOpen,
   transitionDuration = 200,
   transitionTimingFunction = easings.ease1,
-  transitionEnd,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const heightRef = useRef<number>();
+  const [isFirstMount, setIsFirstMount] = useState(true);
 
-  const [height, setHeight] = useState(
-    isOpen ? getElementHeight(ref) : COLLAPSED_HEIGHT,
-  );
+  const realHeight = isOpen
+    ? heightRef.current ?? "auto"
+    : isFirstMount // 如果是mount的阶段则先将高度设置为auto，保证在layout阶段可获取内容高度，重新render时realHeight会重新变为0
+      ? "auto"
+      : 0;
 
+  // const handleTransitionEnd = () => {
+  //   if (!isOpen) {
+  //     ref.current!.style.setProperty("display", "none");
+  //   }
+  // };
+
+  // if (isOpen && ref.current) {
+  //   ref.current.style.setProperty("display", "block");
+  // }
+
+  // mount的时候拦截绘制先获取实际内容的高度， 使用useLayout不使用effect可以防止重新渲染导致页面抖动
   useLayoutEffect(() => {
-    if (isOpen) {
-      /**
-       * Set it to display block at first which has changed the style.
-       * And then we read the scrollHeight of the dom, which will cause Force Synchronous Layout(强制同步布局)
-       * so we can get the collect height.
-       */
-      ref.current!.style.setProperty("display", "block");
-      const domHeight = getElementHeight(ref);
-      setHeight(domHeight);
-    } else {
-      setHeight(COLLAPSED_HEIGHT);
+    if (ref.current && isFirstMount) {
+      const domHeight = ref.current?.getBoundingClientRect().height;
+      heightRef.current = domHeight;
+      setIsFirstMount(false);
     }
-  }, [isOpen]);
-
-  const handleTransitionEnd = () => {
-    if (!isOpen) {
-      ref.current!.style.setProperty("display", "none");
-    }
-    transitionEnd?.();
-  };
+  }, [isFirstMount]);
 
   return (
     <div
       ref={ref}
       {...stylex.props(
         style.base,
+        style.getHeight(realHeight),
         style.transition(transitionDuration, transitionTimingFunction),
-        style.getHeight(height),
+        // isOpen ? style.show : style.hidden,
       )}
-      onTransitionEnd={handleTransitionEnd}
+      // onTransitionEnd={handleTransitionEnd}
     >
       {children}
     </div>

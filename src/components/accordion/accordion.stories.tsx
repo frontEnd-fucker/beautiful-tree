@@ -28,3 +28,24 @@ export const Basic: Story = {
     </Accordion>
   ),
 };
+
+const ControllableAccordion = () => {
+  const [value, setValue] = React.useState("item1");
+
+  return (
+    <Accordion value={value} onChange={setValue}>
+      <Accordion.Item value="item1">
+        <Accordion.Control>Item 1</Accordion.Control>
+        <Accordion.Panel>I am discription 1</Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item value="item2">
+        <Accordion.Control>Item 2</Accordion.Control>
+        <Accordion.Panel>I am discription 2</Accordion.Panel>
+      </Accordion.Item>
+    </Accordion>
+  );
+};
+
+export const Control: Story = {
+  render: () => <ControllableAccordion />,
+};
