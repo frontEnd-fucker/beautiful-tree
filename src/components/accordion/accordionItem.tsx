@@ -1,10 +1,18 @@
 import React, { PropsWithChildren } from "react";
 
 import { AccordionItemContextProvider } from "./accordionItem.context";
+import stylex from "@stylexjs/stylex";
 
 export interface AccordionItemProps extends PropsWithChildren {
   value: string;
 }
+
+const styles = stylex.create({
+  container: {
+    borderBottom: "1px solid #DEE2E6",
+    fontSize: 16,
+  },
+});
 
 export const AccordionItem: React.FC<AccordionItemProps> = ({
   children,
@@ -12,7 +20,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
 }) => {
   return (
     <AccordionItemContextProvider value={{ value }}>
-      {children}
+      <div {...stylex.props(styles.container)}>{children}</div>
     </AccordionItemContextProvider>
   );
 };

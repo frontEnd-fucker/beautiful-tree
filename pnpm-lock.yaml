@@ -11,6 +11,9 @@ dependencies:
   '@stylexjs/stylex':
     specifier: ^0.3.0
     version: 0.3.0
+  open-props:
+    specifier: ^1.6.17
+    version: 1.6.17
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -7558,6 +7561,10 @@ packages:
     dependencies:
       mimic-fn: 4.0.0
     dev: true
+
+  /open-props@1.6.17:
+    resolution: {integrity: sha512-6mp/gpLQz/ZwrGLz+i7tSJ3eWNLE1KxLXHO+b6xxRyZ1Alp4TgTcvHiQ89rC2IkvsU3/IRhpIJuxl7rRCwUzLA==}
+    dev: false
 
   /open@8.4.2:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}

@@ -14,6 +14,10 @@ interface AvatarProps {
     src?: string;
     /** Size of the avatar */
     size?: "sm" | "md" | "lg";
+    /** Image alt attribute */
+    alt?: string;
+    /** Placeholder when there is no image */
+    placeholder?: React.ReactNode;
 }
 declare const Avatar: React.FC<AvatarProps>;
 
