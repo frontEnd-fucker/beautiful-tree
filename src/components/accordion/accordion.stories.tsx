@@ -74,6 +74,17 @@ const ControllableAccordion = () => {
           </p>
         </Accordion.Panel>
       </Accordion.Item>
+      <Accordion.Item value="item3">
+        <Accordion.Control>Item 3</Accordion.Control>
+        <Accordion.Panel>
+          <p>I am discription 3</p>
+          <p>
+            Est incididunt eiusmod aliqua velit sunt quis ea ullamco incididunt
+            dolor amet laboris dolore. Adipisicing eu occaecat veniam sint
+            laboris commodo velit enim quis. Labore tempor mollit enim aliqua.
+          </p>
+        </Accordion.Panel>
+      </Accordion.Item>
     </Accordion>
   );
 };

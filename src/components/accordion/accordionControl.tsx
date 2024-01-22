@@ -9,13 +9,15 @@ export interface AccordionControlProps extends PropsWithChildren {}
 
 const styles = stylex.create({
   container: {
-    width: 300,
     height: 44,
     display: "flex",
     alignItems: "center",
     cursor: "pointer",
     padding: "12px 16px",
     columnGap: 16,
+  },
+  active: {
+    background: "#F2F4F5",
   },
   arrowBase: {
     transition: "rotate .2s",
@@ -31,19 +33,18 @@ export const AccordionControl: React.FC<AccordionControlProps> = ({
 }) => {
   const accordionContext = useAccordionContext();
   const { value: itemValue } = useAccordionItemContext();
+  const isActive = accordionContext.value === itemValue;
 
   const onControlClick = () => {
     accordionContext.onChange?.(itemValue);
   };
 
   return (
-    <div {...stylex.props(styles.container)} onClick={() => onControlClick()}>
-      <div
-        {...stylex.props(
-          styles.arrowBase,
-          accordionContext.value === itemValue && styles.arrowRotate,
-        )}
-      >
+    <div
+      {...stylex.props(styles.container, isActive && styles.active)}
+      onClick={() => onControlClick()}
+    >
+      <div {...stylex.props(styles.arrowBase, isActive && styles.arrowRotate)}>
         <RxChevronDown size={16} />
       </div>
       {children}

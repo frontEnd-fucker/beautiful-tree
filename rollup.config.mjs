@@ -6,6 +6,8 @@ import dts from "rollup-plugin-dts";
 import stylexPlugin from "@stylexjs/rollup-plugin";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+// We'll use this plugin to minify our code
+import terser from "@rollup/plugin-terser";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -42,21 +44,67 @@ export default defineConfig([
 
     output: [
       {
-        file: "dist/beatiful-tree.cjs",
+        file: "dist/beautiful-tree.cjs",
         format: "cjs",
         sourcemap: true,
         globals,
       },
       {
-        file: "dist/beatiful-tree.mjs",
+        file: "dist/beautiful-tree.mjs",
         format: "esm",
         sourcemap: true,
         globals,
+      },
+      {
+        // file: "dist/beautiful-tree.mjs",
+        format: "esm",
+        sourcemap: true,
+        globals,
+        entryFileNames: "[name].mjs",
+        dir: "dist/esm",
+        preserveModules: true,
+      },
+      {
+        name: "BeautifulTree", // The global name given to the "bundle"
+        file: "dist/beautiful-tree.iife.js",
+        format: "iife",
+        globals, // We tell Rollup how to map the external dependencies
+        sourcemap: true, // We want sourcemaps for debugging purposes
       },
     ],
 
     external,
     plugins: [pluginTs(), stylexPluginConfig],
+  },
+
+  // We have another set of output files that uses a slightly different
+  // configuration: We want to minify the code, so we use `terser` as a plugin,
+  // and add the `min` infix to the output filenames.
+  {
+    input,
+    output: [
+      {
+        file: "dist/beautiful-tree.min.cjs",
+        format: "cjs",
+        globals,
+        sourcemap: true,
+      },
+      {
+        file: "dist/beautiful-tree.min.mjs",
+        format: "es",
+        globals,
+        sourcemap: true,
+      },
+      {
+        name: "BeautifulTree",
+        file: "dist/beautiful-tree.min.iife.js",
+        format: "iife",
+        globals,
+        sourcemap: true,
+      },
+    ],
+    external,
+    plugins: [pluginTs(), stylexPluginConfig, terser()],
   },
 
   {

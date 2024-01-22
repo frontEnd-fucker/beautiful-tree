@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, PropsWithChildren } from 'react';
 
 type ButtonProps = {
     /** size of the button */
@@ -21,4 +21,38 @@ interface AvatarProps {
 }
 declare const Avatar: React.FC<AvatarProps>;
 
-export { Avatar, type AvatarProps, Button, type ButtonProps };
+interface CollapseProps {
+    /** Open state  */
+    isOpen: boolean;
+    /** transitionDuration in ms, 200 by default */
+    transitionDuration?: number;
+    /** transitionTimingFunction, ease by default */
+    transitionTimingFunction?: string;
+    /** Callback for the transion end */
+    transitionEnd?: () => void;
+}
+declare const Collapse: React.FC<PropsWithChildren<CollapseProps>>;
+
+interface AccordionPanelProps extends PropsWithChildren {
+}
+
+interface AccordionControlProps extends PropsWithChildren {
+}
+
+interface AccordionItemProps extends PropsWithChildren {
+    value: string;
+}
+
+interface AccordionProps extends PropsWithChildren {
+    defaultValue?: string;
+    value?: string;
+    onChange?: (value: string) => void;
+}
+declare const Accordion: {
+    ({ children, defaultValue, value, onChange, }: AccordionProps): React.JSX.Element;
+    Item: React.FC<AccordionItemProps>;
+    Control: React.FC<AccordionControlProps>;
+    Panel: React.FC<AccordionPanelProps>;
+};
+
+export { Accordion, type AccordionProps, Avatar, type AvatarProps, Button, type ButtonProps, Collapse, type CollapseProps };

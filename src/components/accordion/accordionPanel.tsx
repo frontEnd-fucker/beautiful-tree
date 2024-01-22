@@ -7,6 +7,7 @@ import { useAccordionItemContext } from "./accordionItem.context";
 const styles = stylex.create({
   container: {
     padding: "4px 16px",
+    background: "#F2F4F5",
   },
 });
 

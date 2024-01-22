@@ -2,8 +2,24 @@
   "name": "beautiful-tree",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "type": "module",
+  "main": "./dist/beautiful-tree.cjs",
+  "module": "./dist/beautiful-tree.mjs",
+  "types": "./dist/beautiful-tree.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/beautiful-tree.d.mts",
+        "default": "./dist/beautiful-tree.mjs"
+      },
+      "require": {
+        "types": "./dist/beautiful-tree.d.cts",
+        "default": "./dist/beautiful-tree.cjs"
+      },
+      "browser": "./dist/beautiful-tree.iife.js"
+    },
+    "./dist/stylex.css": "./dist/stylex.css"
+  },
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
@@ -18,12 +34,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
     "@stylexjs/open-props": "^0.3.0",
     "@stylexjs/stylex": "^0.3.0",
     "open-props": "^1.6.17",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.12.0"
+    "react-icons": "^4.12.0",
+    "react-transition-state": "^2.1.1"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.23.3",
