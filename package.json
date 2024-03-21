@@ -28,6 +28,7 @@
     "prepare": "husky install",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
+    "types:check": "tsc --skipLibCheck --noEmit",
     "build": "rollup -c"
   },
   "keywords": [],

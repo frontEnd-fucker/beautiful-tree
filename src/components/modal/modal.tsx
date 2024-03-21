@@ -16,7 +16,7 @@ export interface ModalProps {
   /** If true, there is a close button. Default is false */
   hasCloseBtn?: boolean;
   /** Title of the modal */
-  title?: string;
+  // title?: string;
   /** Callback for backdrop click or close button click */
   onClose?: (
     event: React.SyntheticEvent,
