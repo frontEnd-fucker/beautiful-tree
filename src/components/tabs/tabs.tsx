@@ -16,8 +16,8 @@ export interface ItemProps {
 export interface TabsProps {
   /** Default open tab, use for uncontrol tabs  */
   defaultKey?: React.Key;
-  value: React.Key;
-  onChange: (key: React.Key) => void;
+  value?: React.Key;
+  onChange?: (key: React.Key) => void;
   /** Children of the tabs. It should be the Tabs.Item */
   children: React.ReactElement<ItemProps>[];
 }
