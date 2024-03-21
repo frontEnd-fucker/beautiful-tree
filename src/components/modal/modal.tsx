@@ -10,7 +10,7 @@ import "../../style/token/zIndex.stylex";
 
 export interface ModalProps {
   /** If true, the modal is shown */
-  open: boolean;
+  // open: boolean;
   /** Content of the modal */
   children: React.ReactNode;
   /** If true, there is a close button. Default is false */
