@@ -121,17 +121,21 @@ export const Modal: React.FC<ModalProps> = ({
       <div
         {...stylex.props(styles.backdrop)}
         onClick={(e) => onClose?.(e, "backdropClick")}
+        data-testid="backdrop"
       ></div>
       <div {...stylex.props(styles.contentWrap)}>
         {hasHeader && (
           <div {...stylex.props(styles.header)}>
             <div {...stylex.props(styles.title)}>{title}</div>
-            <div
-              {...stylex.props(styles.closeBtn)}
-              onClick={(e) => onClose?.(e, "closeBtnClick")}
-            >
-              <RxCross2 />
-            </div>
+            {hasCloseBtn && (
+              <div
+                {...stylex.props(styles.closeBtn)}
+                onClick={(e) => onClose?.(e, "closeBtnClick")}
+                data-testid="close-button"
+              >
+                <RxCross2 />
+              </div>
+            )}
           </div>
         )}
         <div {...stylex.props(styles.body)}>{children}</div>

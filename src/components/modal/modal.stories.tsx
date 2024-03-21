@@ -16,8 +16,10 @@ type Story = StoryObj<typeof Modal>;
 
 const BasicModal = ({
   closeOnBackdrop = false,
+  hasCloseBtn = true,
 }: {
   closeOnBackdrop?: boolean;
+  hasCloseBtn?: boolean;
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -31,7 +33,12 @@ const BasicModal = ({
   return (
     <>
       <button onClick={() => setOpen(true)}>Open</button>
-      <Modal open={open} hasCloseBtn title="Modal Title" onClose={handleClose}>
+      <Modal
+        open={open}
+        hasCloseBtn={hasCloseBtn}
+        title="Modal Title"
+        onClose={handleClose}
+      >
         Commodo enim eiusmod officia magna et consequat magna non reprehenderit
         nisi cupidatat non non. In officia officia qui nisi laborum. Occaecat
         Lorem ullamco cillum voluptate irure sit ad reprehenderit sunt eiusmod
@@ -50,4 +57,8 @@ export const Basic: Story = {
 
 export const CloseOnBackdrop: Story = {
   render: () => <BasicModal closeOnBackdrop />,
+};
+
+export const Title: Story = {
+  render: () => <BasicModal hasCloseBtn={false} />,
 };
