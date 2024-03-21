@@ -10,20 +10,20 @@ import "../../style/token/zIndex.stylex";
 
 export interface ModalProps {
   /** If true, the modal is shown */
-  // open: boolean;
+  open: boolean;
   /** Content of the modal */
   children: React.ReactNode;
   /** If true, there is a close button. Default is false */
-  // hasCloseBtn?: boolean;
+  hasCloseBtn?: boolean;
   /** Title of the modal */
-  // title?: string;
+  title?: string;
   /** Callback for backdrop click or close button click */
   onClose?: (
     event: React.SyntheticEvent,
     reason: "backdropClick" | "closeBtnClick",
   ) => void;
   /** transitionDuration in ms, 200 by default */
-  // transitionDuration?: number;
+  transitionDuration?: number;
   /** transitionTimingFunction, ease by default */
   transitionTimingFunction?: string;
 }
