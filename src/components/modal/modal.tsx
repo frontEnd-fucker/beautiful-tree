@@ -23,7 +23,7 @@ export interface ModalProps {
     reason: "backdropClick" | "closeBtnClick",
   ) => void;
   /** transitionDuration in ms, 200 by default */
-  transitionDuration?: number;
+  // transitionDuration?: number;
   /** transitionTimingFunction, ease by default */
   transitionTimingFunction?: string;
 }
