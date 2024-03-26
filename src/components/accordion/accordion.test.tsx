@@ -1,6 +1,7 @@
 import React, { RefObject, createRef } from "react";
-import { fireEvent, render, screen } from "../../test/utils";
+
 import { Accordion } from ".";
+import { fireEvent, render, screen } from "../../test/utils";
 
 describe("Accordion", async () => {
   it("should render the default item", () => {

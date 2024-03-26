@@ -2,9 +2,10 @@ import stylex from "@stylexjs/stylex";
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { RxCross2 } from "react-icons/rx";
+import { useTransition } from "react-transition-state";
+
 import { easings } from "../../style/token/easing.stylex";
 import "../../style/token/easing.stylex";
-import { useTransition } from "react-transition-state";
 import { zIndex } from "../../style/token/zIndex.stylex";
 import "../../style/token/zIndex.stylex";
 
